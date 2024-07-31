@@ -37,6 +37,11 @@ export function App() {
       return
     }
 
+    if (emailsToInvite.includes (email)){
+      return
+    }
+
+    
     setEmailsToInvite([
       ...emailsToInvite,
       email
