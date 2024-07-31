@@ -1,8 +1,9 @@
-import { MapPin, Calendar, ArrowRight, UserRoundPlus, Settings2} from 'lucide-react'
 import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { InviteGhestsModal } from './invite-ghests-modal'
 import { ConfirmTripModal } from './confirm-trip-modal'
+import { DestinationAndDateStep } from './trip-details/steps/destination-and-date-step'
+import { InviteGuestStep } from './trip-details/steps/invite-guests-step'
 
 export function CreateTripPage() {
 
@@ -76,6 +77,7 @@ event.preventDefault()
     
     setEmailsToInvite(newEmailList)
   }
+
   return (
 
   <div className="h-screen flex items-center justify-center bg-pattern bg-no-repeat bg-center">
@@ -83,58 +85,18 @@ event.preventDefault()
     <p className="text-zinc-300 text-lg">Convide seus amigos e planeje sua próxima viagem!</p>
     
     <div className='space-y-4'>
-   <div className="h-16 bg-zinc-900 p-4 rounded-xl flex items-center gap-3">
-
-      <div className='flex items-center gap-2 flex-1'>
-           <MapPin className='size-5 text-zinc-400' />
-          <input disabled={isGhestsInputOpen} type="text" placeholder="Para onde você vai?" className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"/>
-      </div>
-
-      <div className='flex items-center gap-2'>
-        <Calendar className='size-5 text-zinc-400' />
-        <input disabled={isGhestsInputOpen} type="text" placeholder="Quando?" className="bg-transparent text-lg placeholder-zinc-400 w-40 outline-none"/>
-      </div>
- 
-      <div className='w-px h-6 bg-zinc-800' />
-
-      {isGhestsInputOpen ? (
-        <button onClick={closeGhestsInput} className='bg-zinc-800 text-zinc-200 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-zinc-700'>
-          Alterar Local/data
-          <Settings2 className='szie-5'/>
-          </button>
-      ): (
-        <button onClick={openGhestsInput} className='bg-lime-300 text-lime-950 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-lime-400'>
-          Continuar
-          <ArrowRight className='size- 5' />
-        </button> 
-      )}
-
-  </div>
+   <DestinationAndDateStep
+    closeGhestsInput={closeGhestsInput}
+    isGhestsInputOpen={isGhestsInputOpen}
+    openGhestsInput={openGhestsInput} 
+   />
 
     {isGhestsInputOpen && (
-
-         <div className="h-16 bg-zinc-900 p-4 rounded-xl flex items-center gap-3">
-
-         <button type='button' onClick={openGhestsModal} className='flex items-center gap-2 flex-1'>
-              <UserRoundPlus className='size-5 text-zinc-400' />
-              {emailsToInvite.length > 0 ? (
-                <span className='text-zinc-100 text-lg flex-1 text-left'>
-                  {emailsToInvite.length} pessoa(s) convidada(s)
-                </span>
-              ) : (
-                <span className='text-zinc-400 text-lg flex-1 text-left'>Quem estará na viagem?</span>
-              )}
-         </button>
-    
-         <div className='w-px h-6 bg-zinc-800' />
-   
-       <button onClick={openConfirmTripModal}className='bg-lime-300 text-lime-950 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-lime-400'>
-         Confirmar Viagem
-         <ArrowRight className='size- 5' />
-       </button>
-   
-     </div>
-
+      <InviteGuestStep 
+      emailsToInvite={emailsToInvite}
+      openConfirmTripModal={openConfirmTripModal}
+      openGhestsModal={openGhestsModal}
+      />
     )}
     </div>
 
