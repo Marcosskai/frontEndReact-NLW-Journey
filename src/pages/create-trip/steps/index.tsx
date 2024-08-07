@@ -119,7 +119,7 @@ event.preventDefault()
     )}
 
       {isConfirmTripModalOpen && (
-        <ConfirmTripModal 
+        <ConfirmTripModal
         closeConfirmTripModal={closeConfirmTripModal}
         createTrip={createTrip}
         />
