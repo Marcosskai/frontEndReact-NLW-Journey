@@ -16,7 +16,7 @@ export function DestinationAndDateStep ( {
 
       <div className='flex items-center gap-2 flex-1'>
            <MapPin className='size-5 text-zinc-400' />
-          <input disabled={isGhestsInputOpen} type="text" placeholder="Para onde você vai?" className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"/>
+            <input disabled={isGhestsInputOpen} type="text" placeholder="Para onde você vai?" className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"/>
       </div>
 
       <div className='flex items-center gap-2'>
@@ -30,7 +30,7 @@ export function DestinationAndDateStep ( {
         <button onClick={closeGhestsInput} className='bg-zinc-800 text-zinc-200 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-zinc-700'>
           Alterar Local/data
           <Settings2 className='szie-5'/>
-          </button>
+        </button>
       ): (
         <button onClick={openGhestsInput} className='bg-lime-300 text-lime-950 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-lime-400'>
           Continuar
