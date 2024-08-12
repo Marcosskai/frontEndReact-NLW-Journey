@@ -27,7 +27,7 @@ export function CreateActivityModal({
                     <Tag className='text-zinc-400 size-5'/>
                     <input 
                         name='tittle' 
-                        placeholder="Qual a atividade?" 
+                        placeholder="Qual a atividade?"  
                         className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"/>
                 </div>  
 
