@@ -41,7 +41,6 @@ export function TripDetailsPage () {
                 <Guests />
             </div>
         </main>
-
              {isCreateActivityModalOpen && (
               <CreateActivityModal closeCreateActivityModal={closeCreateActivityModal}/>  
              )}
